@@ -23,5 +23,5 @@ func New() http.Handler {
 func Home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	utils.RespondWithError(w, http.StatusFound, "Home Of Quests")
+	utils.RespondWithMessage(w, http.StatusFound, "Home Of Quests")
 }

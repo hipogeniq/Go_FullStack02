@@ -6,12 +6,9 @@ import (
 
 	"github.com/hipogeniq/Go_FullStack02/controllers"
 	"github.com/hipogeniq/Go_FullStack02/models"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load()
-	check(err)
 
 	handler := controllers.New()
 
@@ -22,7 +19,7 @@ func main() {
 
 	models.ConnectDatabase()
 
-	err = server.ListenAndServe()
+	err := server.ListenAndServe()
 	check(err)
 }
 
