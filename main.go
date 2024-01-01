@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/hipogeniq/Go_FullStack02/controllers"
@@ -9,7 +10,8 @@ import (
 )
 
 func main() {
-	godotenv.Load()
+	err := godotenv.Load()
+	check(err)
 
 	handler := controllers.New()
 
@@ -20,5 +22,12 @@ func main() {
 
 	models.ConnectDatabase()
 
-	server.ListenAndServe()
+	err = server.ListenAndServe()
+	check(err)
+}
+
+func check(e error) {
+	if e != nil {
+		log.Fatal(e)
+	}
 }
