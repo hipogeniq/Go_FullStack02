@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -21,9 +22,11 @@ type QuestInput struct {
 
 func CreateQuest(w http.ResponseWriter, r *http.Request) {
 	var input QuestInput
-
+	fmt.Println(r.Body)
 	body, _ := ioutil.ReadAll(r.Body)
 	_ = json.Unmarshal(body, &input)
+
+	fmt.Println(input)
 
 	validate = validator.New()
 	err := validate.Struct(input)
@@ -34,6 +37,10 @@ func CreateQuest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	quest, err := models.NewQuest(input.Title, input.Description, input.Reward)
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 
