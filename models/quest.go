@@ -10,3 +10,15 @@ type Quest struct {
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }
+
+func NewQuest(title string, description string, reward int) (quest *Quest, err error) {
+	quest = &Quest{
+		Title:       title,
+		Description: description,
+		Reward:      reward,
+	}
+
+	DB.Create(&quest)
+
+	return quest, nil
+}

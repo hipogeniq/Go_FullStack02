@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/mux"
-	"github.com/hipogeniq/GoFullStack_02/models"
-	"github.com/hipogeniq/GoFullStack_02/utils"
+	"github.com/hipogeniq/Go_FullStack02/models"
+	"github.com/hipogeniq/Go_FullStack02/utils"
 )
 
 var validate *validator.Validate
