@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 
@@ -22,11 +23,9 @@ type QuestInput struct {
 
 func CreateQuest(w http.ResponseWriter, r *http.Request) {
 	var input QuestInput
-	fmt.Println(r.Body)
-	body, _ := ioutil.ReadAll(r.Body)
-	_ = json.Unmarshal(body, &input)
 
-	fmt.Println(input)
+	body, _ := io.ReadAll(r.Body)
+	_ = json.Unmarshal(body, &input)
 
 	validate = validator.New()
 	err := validate.Struct(input)
